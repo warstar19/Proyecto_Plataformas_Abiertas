@@ -23,20 +23,20 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($usuario as $usuario): ?>
+                <?php foreach ($usuarios as $usuario): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($usuario['identificacion']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['nombre']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['apellido1']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['apellido2']); ?></td>
-                    <td><?php echo htmlspecialchars($usuario['email']); ?></td>
+                    <td><?php echo htmlspecialchars($usuario['correo']); ?></td>
                     <td><?php echo htmlspecialchars($usuario['perfil']);?></td>
                     <td>
                         <!-- Botón para Editar -->
-                        <a href="editar_usuario.php?id=<?php echo $usuario['ID']; ?>" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="" class="btn btn-warning btn-sm">Editar</a>
                         
                         <!-- Botón para Eliminar -->
-                        <a href="eliminar_usuario.php?id=<?php echo $usuario['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</a>
+                        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">Eliminar</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
