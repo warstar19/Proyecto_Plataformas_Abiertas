@@ -9,13 +9,13 @@
 </head>
 
 <body>
-    <?php include 'views/navbar.php'; ?>
+    <?php include '../navbar.php'; ?>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2 class="text-center mb-4">Editar Usuario</h2>
                 <form action="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios/actualizar" method="POST">
-                    <input type="hidden" name="identificacion" value="<?php echo htmlspecialchars($usuarioData['identificacion']);?>">
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($usuarioData['identificacion']); ?>">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre" class="form-control"
@@ -46,13 +46,12 @@
                         <input type="password" id="contrasena" name="contrasena" class="form-control"
                             value="<?php echo htmlspecialchars($usuarioData['contrasena']); ?>">
                     </div>
-                    
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
                         <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios"
                             class="btn btn-secondary ml-2">Cancelar</a>
-                    </div>                    
-                </form>                
+                    </div>
+                </form>
             </div>
         </div>
     </div>
