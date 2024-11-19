@@ -73,8 +73,8 @@ function handleGetRequests($url, $controllerUsuario, $controllerPrendas) {
         
 
         default:
-            http_response_code(404);
-            echo "Página no encontrada.";
+            '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas';
+            $controllerPrendas->lista_prenda();
             break;
     }
 }
