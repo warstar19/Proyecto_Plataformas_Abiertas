@@ -39,7 +39,9 @@ class Usuario
         $stmt->bindParam(':correo', $correo);
         $stmt->bindParam(':perfil', $perfil);
         $stmt->bindParam(':contrasena', $contrasena);
-        return $stmt->execute();
+        $stmt->execute();
+        return $this->conn->lastInsertId();
+
     }
 
     public function actualizarUsuario($identificacion, $nombre, $apellido1, $apellido2, $correo, $perfil, $contrasena)

@@ -7,7 +7,10 @@ class UsuarioController
     {
         $usuario = new Usuario();
         $usuarios = $usuario->obtenerUsuarios();
-        require 'views/usuarios/lista_usuarios.php';
+        echo json_encode(value: ["Resultado" =>   $usuario->obtenerUsuarios()]);
+       
+       //Comentario profesor:  La vista aca no se usa ya que estamos creando una API, por lo tanto cambie que devuelta un json.
+        // require 'views/usuarios/lista_usuarios.php';
     }
 
     public function editar_usuario($identificacion)
@@ -17,21 +20,45 @@ class UsuarioController
         require 'views/usuarios/editar_usuario.php';
     }
 
+
     public function insertar_usuario()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $usuario = new Usuario();
+            $input = file_get_contents('php://input');
+            $data = json_decode($input, true);
+
             $usuario->crearUsuario(
-                $_POST['identificacion'],
-                $_POST['nombre'],
-                $_POST['apellido1'],
-                $_POST['apellido2'],
-                $_POST['correo'],
-                $_POST['perfil'],
-                $_POST['contrasena']
+                identificacion: $data['identificacion'] ?? null,
+                nombre: $data['nombre'] ?? null,
+                apellido1: $data['apellido1'] ?? null,
+                apellido2: $data['apellido2'] ?? null,
+                correo: $data['correo'] ?? null,
+                perfil: $data['perfil'] ?? null,
+                contrasena: $data['contrasena'] ?? null
             );
-            header("Location: /Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios");
-            exit();
+
+            echo json_encode([
+                "Resultado" => "Creacion exitosa"
+            ]);
+
+
+            var_dump($_POST); // Imprime todos los datos enviados por POST
+           
+          /*  echo json_encode(value: ["Resultado" =>   
+                    $usuario->crearUsuario(
+                        identificacion: $_POST['identificacion'],
+                        $_POST['nombre'],
+                        $_POST['apellido1'],
+                        $_POST['apellido2'],
+                        $_POST['correo'],
+                        $_POST['perfil'],
+                        $_POST['contrasena']
+            )]);*/
+            //Comentario profesor:  La vista aca no se usa ya que estamos creando una API, por lo tanto cambie que devuelta un json.
+            //En la respuesta vamos a obtener el nuevo id creado.
+            //header("Location: /Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios");
+            ///exit();
         }
     }
 
