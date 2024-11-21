@@ -9,7 +9,7 @@ class UsuarioController
         $usuarios = $usuario->obtenerUsuarios();
         echo json_encode(value: ["Resultado" =>   $usuario->obtenerUsuarios()]);
        
-       //Comentario profesor:  La vista aca no se usa ya que estamos creando una API, por lo tanto cambie que devuelta un json.
+       //Comentario profesor:  La vista aca no se usa ya que estamos creando una API, por lo tanto cambie que devuelva un json.
         // require 'views/usuarios/lista_usuarios.php';
     }
 
@@ -55,7 +55,7 @@ class UsuarioController
                         $_POST['perfil'],
                         $_POST['contrasena']
             )]);*/
-            //Comentario profesor:  La vista aca no se usa ya que estamos creando una API, por lo tanto cambie que devuelta un json.
+            //Comentario profesor:  La vista aca no se usa ya que estamos creando una API, por lo tanto cambie que devuelva un json.
             //En la respuesta vamos a obtener el nuevo id creado.
             //header("Location: /Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios");
             ///exit();
