@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include 'views/navbar.php'; ?>
+    <?php include '../navbar.php'; ?>
     <div class="container mt-5">
         <h3 class="text-center mb-4">Lista de Prendas</h3>
         <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/agregar"

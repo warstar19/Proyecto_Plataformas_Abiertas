@@ -12,7 +12,7 @@
                 <a class="nav-link" href="/proyecto_plataformas_abiertas/proyecto/index.php/ventas">Ventas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios">Usuarios</a>
+                <a class="nav-link" href="/Proyecto_Plataformas_Abiertas/Vistas_Sitio_Web/usuarios/lista_usuarios.php">Usuarios</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/proyecto_plataformas_abiertas/proyecto/index.php/reportes">Reportes</a>
