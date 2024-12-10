@@ -15,7 +15,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 $routes = [
     'GET' => [
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios' => function () use ($controllerUsuario) {
-            $id = $_GET['id'] ?? null;
             $controllerUsuario->lista_usuario();
         },
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios/agregar' => function () {
@@ -33,7 +32,15 @@ $routes = [
         },
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas' => function () use ($controllerPrendas) {
             $controllerPrendas->lista_prenda();
-        }
+        },
+        '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/editar' => function () use ($controllerPrendas) {            
+            $prenda_id = validateIdParam('ID de prenda no proporcionada.');
+            $prendaData = $controllerPrendas->editar_prenda($prenda_id);
+            include __DIR__ . '/../Vistas_Sitio_Web/prendas/editar_prenda.php';
+        },
+        '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/agregar' => function () {
+            include __DIR__ . '/../Vistas_Sitio_Web/prendas/agregar_prenda.php';
+        },
     ],
     'POST' => [
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios/insertar' => function () use ($controllerUsuario) {
@@ -43,6 +50,14 @@ $routes = [
             $id = validatePostParam('identificacion', 'ID del usuario no proporcionado.');
             $controllerUsuario->actualizar_usuario($id, $_POST);
             include __DIR__ . '/../Vistas_Sitio_Web/usuarios/lista_usuarios.php';
+        },
+        '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/actualizar' => function () use ($controllerPrendas) {
+            $prenda_id = validatePostParam('prenda_id', 'ID de la prenda no proporcionada.');
+            $controllerPrendas->actualizar_prenda($prenda_id, $_POST);
+            include __DIR__ . '/../Vistas_Sitio_Web/prendas/lista_prendas.php';
+        },
+        '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/insertar' => function () use ($controllerPrendas) {
+            $controllerPrendas->insertar_prenda();
         },
     ]
 ];

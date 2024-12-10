@@ -18,11 +18,11 @@ class Prenda
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function obtenerPrendaPorId($id)
+    public function obtenerPrendaPorId($prenda_id)
     {
-        $sql = "SELECT * FROM prenda WHERE id = :id";
+        $sql = "SELECT prenda_id, marca_id, nombre_prenda, precio, stock FROM prendas WHERE prenda_id = :prenda_id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':prenda_id', $prenda_id);        
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }

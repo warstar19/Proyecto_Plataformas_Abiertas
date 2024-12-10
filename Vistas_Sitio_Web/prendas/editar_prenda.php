@@ -1,60 +1,53 @@
+<?php
+// Validar que la variable $prendaData existe
+if (!isset($prendaData)) {
+    echo "Error: No se pudieron cargar los datos del usuario.";
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Usuario</title>
+    <title>Editar Prenda</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <?php include '../navbar.php'; ?>
+    <?php include __DIR__ . '/../../Vistas_Sitio_Web/navbar.php'; ?>
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h2 class="text-center mb-4">Editar Usuario</h2>
-                <form action="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios/actualizar" method="POST">
-                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($usuarioData['identificacion']); ?>">
+                <h2 class="text-center mb-4">Editar Prenda</h2>
+                <form action="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/actualizar" method="POST">
+                    <input type="hidden" name="prenda_id" value="<?= htmlspecialchars($prendaData['prenda_id']) ?>">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control"
-                            value="<?php echo htmlspecialchars($usuarioData['nombre']); ?>" required>
+                        <label for="marca_id">Marca_id</label>
+                        <input type="text" id="marca_id" name="marca_id" class="form-control"
+                            value="<?= htmlspecialchars($prendaData['marca_id']) ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="apellido1">Primer Apellido</label>
-                        <input type="text" id="apellido1" name="apellido1" class="form-control"
-                            value="<?php echo htmlspecialchars($usuarioData['apellido1']); ?>" required>
+                        <label for="nombre_prenda">Nombre de la Prenda</label>
+                        <input type="text" id="nombre_prenda" name="nombre_prenda" class="form-control"
+                            value="<?= htmlspecialchars($prendaData['nombre_prenda']) ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="apellido2">Segundo Apellido</label>
-                        <input type="text" id="apellido2" name="apellido2" class="form-control"
-                            value="<?php echo htmlspecialchars($usuarioData['apellido2']); ?>" required>
+                        <label for="precio">Precio</label>
+                        <input type="number" id="precio" name="precio" class="form-control"
+                            value="<?= htmlspecialchars($prendaData['precio']) ?>" required>
                     </div>
                     <div class="form-group">
-                        <label for="correo">Correo Electrónico</label>
-                        <input type="email" id="correo" name="correo" class="form-control"
-                            value="<?php echo htmlspecialchars($usuarioData['correo']); ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="perfil">Perfil</label>
-                        <input type="text" id="perfil" name="perfil" class="form-control"
-                            value="<?php echo htmlspecialchars($usuarioData['perfil']); ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contrasena">Contraseña</label>
-                        <input type="password" id="contrasena" name="contrasena" class="form-control"
-                            value="<?php echo htmlspecialchars($usuarioData['contrasena']); ?>">
-                    </div>
+                        <label for="stock">Stock</label>
+                        <input type="number" id="stock" name="stock" class="form-control"
+                            value="<?= htmlspecialchars($prendaData['stock']) ?>" required>
+                    </div>                    
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
-                        <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios"
-                            class="btn btn-secondary ml-2">Cancelar</a>
+                        <a href="/Proyecto_Plataformas_Abiertas/Vistas_Sitio_Web/prendas/lista_prendas.php" class="btn btn-secondary ml-2">Cancelar</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
-
 </html>
