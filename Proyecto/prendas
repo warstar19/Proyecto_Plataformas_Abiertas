@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Prendas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Proyecto Plataformas Abiertas</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas">Prendas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/proyecto_plataformas_abiertas/proyecto/index.php/marcas">Marcas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/proyecto_plataformas_abiertas/proyecto/index.php/ventas">Ventas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios">Usuarios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/proyecto_plataformas_abiertas/proyecto/index.php/reportes">Reportes</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Lista de Prendas</h3>
+        <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/agregar"
+            class="btn btn-primary mb-3">Agregar Nueva Prenda</a>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Prenda_id</th>
+                    <th>Marca_id</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>                    
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Camiseta Deportiva</td>
+                        <td>25.99</td>
+                        <td>50</td>                 
+                        <td>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/editar?id=1"
+                                class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/eliminar?id=1"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta prenda?')">Eliminar</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>Zapatos Running</td>
+                        <td>89.50</td>
+                        <td>30</td>                 
+                        <td>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/editar?id=2"
+                                class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/eliminar?id=2"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta prenda?')">Eliminar</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>Pantalones Deportivos</td>
+                        <td>45.00</td>
+                        <td>20</td>                 
+                        <td>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/editar?id=3"
+                                class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/eliminar?id=3"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta prenda?')">Eliminar</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>4</td>
+                        <td>4</td>
+                        <td>Sudadera con Capucha</td>
+                        <td>60.75</td>
+                        <td>15</td>                 
+                        <td>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/editar?id=4"
+                                class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/eliminar?id=4"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta prenda?')">Eliminar</a>
+                        </td>
+                    </tr>
+                                    <tr>
+                        <td>5</td>
+                        <td>5</td>
+                        <td>Chaleco Entrenamiento</td>
+                        <td>35.99</td>
+                        <td>40</td>                 
+                        <td>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/editar?id=5"
+                                class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/eliminar?id=5"
+                                class="btn btn-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar esta prenda?')">Eliminar</a>
+                        </td>
+                    </tr>
+                            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
