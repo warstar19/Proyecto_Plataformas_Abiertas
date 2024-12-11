@@ -21,62 +21,53 @@ class UsuarioController
     }
 
     public function insertar_usuario()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Decodificar los datos JSON del cuerpo de la solicitud
-            $data = json_decode(file_get_contents("php://input"), true);
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $identificacion = $_POST['identificacion'] ?? null;
+        $nombre = $_POST['nombre'] ?? null;
+        $apellido1 = $_POST['apellido1'] ?? null;
+        $apellido2 = $_POST['apellido2'] ?? null;
+        $correo = $_POST['correo'] ?? null;
+        $perfil = $_POST['perfil'] ?? null;
+        $contrasena = $_POST['contrasena'] ?? null;
 
-            // Verificar si los datos fueron recibidos correctamente
-            if (empty($data['identificacion']) || empty($data['nombre']) || empty($data['apellido1']) || empty($data['apellido2']) || empty($data['correo']) || empty($data['perfil']) || empty($data['contrasena'])) {
-                echo json_encode([
-                    'status' => 'error',
-                    'message' => 'Todos los campos son obligatorios.'
-                ]);
-                return;
-            }
-
+        if ($identificacion && $nombre && $apellido1 && $apellido2 && $correo && $perfil && $contrasena) {
             $usuario = new Usuario();
+            $usuario->crearUsuario(
+                $identificacion,
+                $nombre,
+                $apellido1,
+                $apellido2,
+                $correo,
+                $perfil,
+                $contrasena
+            );
 
-            try {
-                // Llamar al método para crear el usuario
-                $resultado = $usuario->crearUsuario(
-                    $data['identificacion'],
-                    $data['nombre'],
-                    $data['apellido1'],
-                    $data['apellido2'],
-                    $data['correo'],
-                    $data['perfil'],
-                    $data['contrasena']
-                );
-
-                // Verificar el resultado y devolver la respuesta adecuada
-                if ($resultado) {
-                    echo json_encode([
-                        'status' => 'success',
-                        'message' => 'Usuario creado correctamente'
-                    ]);
-                } else {
-                    echo json_encode([
-                        'status' => 'error',
-                        'message' => 'Error al crear el usuario'
-                    ]);
-                }
-            } catch (Exception $e) {
-                // Capturar cualquier error y devolver un mensaje adecuado
-                echo json_encode([
-                    'status' => 'error',
-                    'message' => 'Error al crear el usuario',
-                    'error' => $e->getMessage()
-                ]);
-            }
-        } else {
-            // Si la solicitud no es un POST, retornar un error
+            // Respuesta de éxito en JSON
             echo json_encode([
-                'status' => 'error',
-                'message' => 'Método no permitido'
+                "status" => "success",
+                "message" => "Usuario agregado exitosamente"
+            ]);
+
+            // Redireccionar
+            header("Location: /Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios");
+            exit();
+        } else {
+            // Respuesta de error si faltan datos
+            echo json_encode([
+                "status" => "error",
+                "message" => "Faltan datos requeridos"
             ]);
         }
+    } else {
+        // Respuesta en caso de que no sea POST
+        echo json_encode([
+            "status" => "error",
+            "message" => "Método no permitido"
+        ]);
     }
+}
+
 
 
     public function actualizar_usuario($id, $data)
