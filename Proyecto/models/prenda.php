@@ -53,4 +53,12 @@ class Prenda
         $stmt->bindParam(':stock', $stock);        
         return $stmt->execute();
     }
+
+    public function eliminarPrenda($prenda_id){
+        error_log("Intentando eliminar prenda con ID: " . $prenda_id);
+        $sql = "DELETE FROM prendas WHERE prenda_id = :prenda_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':prenda_id', $prenda_id, PDO::PARAM_STR);
+        return $stmt->execute();
+    }
 }

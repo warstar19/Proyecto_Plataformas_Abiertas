@@ -22,6 +22,7 @@ class UsuarioController
 
     public function insertar_usuario()
 {
+    // Verificar si el método es POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $identificacion = $_POST['identificacion'] ?? null;
         $nombre = $_POST['nombre'] ?? null;
@@ -31,9 +32,10 @@ class UsuarioController
         $perfil = $_POST['perfil'] ?? null;
         $contrasena = $_POST['contrasena'] ?? null;
 
+        // Validar que no falten datos
         if ($identificacion && $nombre && $apellido1 && $apellido2 && $correo && $perfil && $contrasena) {
             $usuario = new Usuario();
-            $usuario->crearUsuario(
+            $resultado = $usuario->crearUsuario(
                 $identificacion,
                 $nombre,
                 $apellido1,
@@ -43,30 +45,32 @@ class UsuarioController
                 $contrasena
             );
 
-            // Respuesta de éxito en JSON
-            echo json_encode([
-                "status" => "success",
-                "message" => "Usuario agregado exitosamente"
-            ]);
-
-            // Redireccionar
-            header("Location: /Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios");
-            exit();
+            // Verificar si la creación fue exitosa
+            if ($resultado) {
+                echo json_encode([
+                    "status" => "success",
+                    "message" => "Usuario agregado exitosamente"
+                ]);
+            } else {
+                echo json_encode([
+                    "status" => "error",
+                    "message" => "No se pudo agregar el usuario. Intente de nuevo."
+                ]);
+            }
         } else {
-            // Respuesta de error si faltan datos
             echo json_encode([
                 "status" => "error",
                 "message" => "Faltan datos requeridos"
             ]);
         }
     } else {
-        // Respuesta en caso de que no sea POST
         echo json_encode([
             "status" => "error",
             "message" => "Método no permitido"
         ]);
     }
 }
+
 
 
 

@@ -41,6 +41,11 @@ $routes = [
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/agregar' => function () {
             include __DIR__ . '/../Vistas_Sitio_Web/prendas/agregar_prenda.php';
         },
+        '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/eliminar' => function () use ($controllerPrendas) {
+            $id = validateIdParam('ID de usuario no proporcionado.');
+            $controllerPrendas->eliminar_prenda($id);
+            include __DIR__ . '/../Vistas_Sitio_Web/prendas/lista_prendas.php';
+        },
     ],
     'POST' => [
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios/insertar' => function () use ($controllerUsuario) {
@@ -49,12 +54,20 @@ $routes = [
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/usuarios/actualizar' => function () use ($controllerUsuario) {
             $id = validatePostParam('identificacion', 'ID del usuario no proporcionado.');
             $controllerUsuario->actualizar_usuario($id, $_POST);
-            include __DIR__ . '/../Vistas_Sitio_Web/usuarios/lista_usuarios.php';
+            header('Content-Type: application/json');
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Usuario actualizado correctamente'
+            ]);
         },
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/actualizar' => function () use ($controllerPrendas) {
             $prenda_id = validatePostParam('prenda_id', 'ID de la prenda no proporcionada.');
             $controllerPrendas->actualizar_prenda($prenda_id, $_POST);
-            include __DIR__ . '/../Vistas_Sitio_Web/prendas/lista_prendas.php';
+            header('Content-Type: application/json');
+            echo json_encode([
+            'status' => 'success',
+            'message' => 'Prenda actualizada correctamente'
+        ]);
         },
         '/Proyecto_Plataformas_Abiertas/Proyecto/index.php/prendas/insertar' => function () use ($controllerPrendas) {
             $controllerPrendas->insertar_prenda();

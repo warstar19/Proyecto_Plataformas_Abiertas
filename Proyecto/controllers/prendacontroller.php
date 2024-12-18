@@ -76,4 +76,10 @@ class PrendaController {
             $data['stock']
         );        
     }
+
+    public function eliminar_prenda($prenda_id)
+    {
+        $prenda = new Prenda();
+            $resultado = $prenda->eliminarPrenda($prenda_id);
+    }
 }
